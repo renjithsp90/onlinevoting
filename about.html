@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#000000">
+
+    <link rel="manifest" href="manifest.json">
+    <link rel="shortcut icon" href="./images/favicon.png">
+ 
+
+    <link rel="stylesheet" href="css/layout.css" type="text/css" />
+    <script src="https://unpkg.com/react@16.0.0/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16.0.0/umd/react-dom.development.js"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.slidepanel.setup.js"></script>
+    <script type="text/javascript" src="js/jquery.ui.min.js"></script>
+    <script type="text/javascript" src="js/jquery.tabs.setup.js"></script>
+    
+    <title>Online Voting</title>
+  </head>
+  <body>
+<div class="wrapper col0">
+  <div id="topbar">
+    <div id="slidepanel">
+      
+      <div style="margin: 0 auto; width: 705px;">
+      <div class="topbox">
+        <h2>Signup here</h2>
+        <form action="admin/" method="GET">
+          <fieldset>
+            <legend>Signup here</legend>
+            <label for="firstname">First Name:
+              <input type="text" name="firstname" id="firstname" value="" />
+            </label>
+            <label for="lastname">Last Name:
+              <input type="text" name="lastname" id="lastname" value="" />
+            </label>
+            <label for="email">Email ID:
+                <input type="email" name="email" id="email" value="" />
+            </label>            
+            <p>
+              <input type="submit" name="signuplogin" id="signuplogin" value="Login" />
+              &nbsp;
+              <input type="reset" name="signupreset" id="signupreset" value="Reset" />
+            </p>
+          </fieldset>
+        </form>
+      </div>
+
+      <div class="topbox" style="margin-top: 0px;">
+        <h2>Login Here</h2>
+        <form action="admin/" method="GET">
+          <fieldset>
+            <legend>Login Form</legend>
+            <label for="username">Username:
+              <input type="text" name="username" id="username" value="" />
+            </label>
+            <label for="password">Password:
+              <input type="password" name="password" id="password" value="" />
+            </label>
+            
+            <p>
+              <input type="submit" name="loginsubmit" id="loginsubmit" value="Login" />
+              &nbsp;
+              <input type="reset" name="loginreset" id="loginreset" value="Reset" />
+            </p>
+          </fieldset>
+        </form>
+      </div>
+
+    </div>
+      
+      <br class="clear" />
+    </div>
+    <div id="loginpanel">
+      <ul>
+        <li class="left">Log In Here &raquo;</li>
+        <li class="right" id="toggle"><a id="slideit" href="#slidepanel">Administration</a><a id="closeit" style="display: none;" href="#slidepanel">Close Panel</a></li>
+      </ul>
+    </div>
+    <br class="clear" />
+  </div>
+</div>
+<!-- ####################################################################################################### -->
+<div class="wrapper col1">
+  <div id="header">
+    <div id="logo">
+        <h1><img src="images/logo_online_voting.png" /></h1>
+    </div>
+    <div class="fl_right">      
+      <p>Tel: 022 526 3841 | Mail: info@onlinevoting.com</p>
+    </div>
+    <br class="clear" />
+  </div>
+</div>
+<!-- ####################################################################################################### -->
+<div class="wrapper col2">
+  <div id="topnav">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li class="active"><a href="about.html">About</a>
+        
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<!-- ####################################################################################################### -->
+<div class="wrapper col3">
+  <div id="featured_slide">
+    <div id="featured_wrap">
+      <ul id="featured_tabs">
+        <li><a href="#fc1">Organisation Name 1<br />
+          <span>Internal Election</span></a></li>
+        <li><a href="#fc2">Organisation Name 2<br />
+          <span>Students union election</span></a></li>
+        <li><a href="#fc3">Organisation Name 3<br />
+          <span>Administration election</span></a></li>
+        <li class="last"><a href="#fc4">Organisation Name 4<br />
+          <span>College union Election</span></a></li>
+      </ul>
+      <div id="featured_content">
+        <div class="featured_box" id="fc1"><img src="images/1.gif" alt="" />
+          <div class="floater"><a href="#">Continue to Result &raquo;</a></div>
+        </div>
+        <div class="featured_box" id="fc2"><img src="images/2.gif" alt="" />
+          <div class="floater"><a href="#">Continue to Result &raquo;</a></div>
+        </div>
+        <div class="featured_box" id="fc3"><img src="images/3.gif" alt="" />
+          <div class="floater"><a href="#">Continue to Result &raquo;</a></div>
+        </div>
+        <div class="featured_box" id="fc4"><img src="images/4.gif" alt="" />
+          <div class="floater"><a href="#">Continue to Result &raquo;</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ####################################################################################################### -->
+<div class="wrapper col4">
+  <div id="container">
+    <div id="hpage">
+      <u><h1 style="font-size: 26px;">Current Polling</h1></u>
+      <ul>
+        <li>
+          <h2>Organisation name 1</h2>
+          <div class="imgholder"><a href="#"><img src="images/200x140.gif" alt="" /></a></div>
+          <p>Online voting of college Students union.<br /> Start date : 25/06/2018<br /> End date : 30/06/2018</p>
+          <p class="readmore"><a href="#">Continue to Vote &raquo;</a></p>
+        </li>
+        <li>
+          <h2>Organisation name 1</h2>
+          <div class="imgholder"><a href="#"><img src="images/demo/200x140.gif" alt="" /></a></div>
+          <p>Online voting of college Students union.<br /> Start date : 25/06/2018<br /> End date : 30/06/2018</p>
+          <p class="readmore"><a href="#">Continue to Vote &raquo;</a></p>
+        </li>
+        <li>
+          <h2>Organisation name 1</h2>
+          <div class="imgholder"><a href="#"><img src="images/demo/200x140.gif" alt="" /></a></div>
+          <p>Online voting of college Students union.<br /> Start date : 25/06/2018<br /> End date : 30/06/2018</p>
+          <p class="readmore"><a href="#">Continue to Vote &raquo;</a></p>
+        </li>
+        <li class="last">
+          <h2>Organisation name 1</h2>
+          <div class="imgholder"><a href="#"><img src="images/demo/200x140.gif" alt="" /></a></div>
+          <p>Online voting of college Students union.<br /> Start date : 25/06/2018<br /> End date : 30/06/2018</p>
+          <p class="readmore"><a href="#">Continue to Vote &raquo;</a></p>
+        </li>
+      </ul>
+      <br class="clear" />
+    </div>
+  </div>
+</div>
+<!-- ####################################################################################################### -->
+<div class="wrapper col5">
+  <div id="footer">
+    
+    <div class="footbox">
+      <h2>About</h2>
+      <ul>
+        <li><a href="#">Company Profile</a></li>
+        <li><a href="#">About Us</a></li
+      </ul>
+    </div>
+    <div class="footbox">
+      <h2>Support</h2>
+      <ul>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </div>
+    <div class="footbox">
+        <h2>Connect</h2>
+        <ul>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Our Clients</a></li>
+        </ul>
+    </div>
+    <div class="footbox">
+        <h2>Get Social With us!</h2>
+        
+          <a href="#"><img src="styles/images/facebook.png" width="40px" height="40px"></a>
+          <a href="#"><img src="styles/images/twitter.png" width="40px" height="40px"></a>
+        
+    </div>
+    
+    <br class="clear" />
+  </div>
+</div>
+<!-- ####################################################################################################### -->
+<div class="wrapper col6">
+  <div id="copyright">
+    <p class="fl_left">Copyright &copy; 2014 - All Rights Reserved - <a href="#">Domain Name</a></p>
+    <br class="clear" />
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,211 @@
+
+.form-style-5{
+    max-width: 500px;
+    padding: 10px 20px;
+    /*background: #f4f7f8;*/
+    margin: 10px auto;
+    border-radius: 8px;
+    font-family:cursive;
+    color: black;
+    font-weight: bold;
+}
+form_head{
+font-weight: bolder;
+
+}
+.form-style-5 fieldset{
+    border: none;
+    padding: 10px;
+}
+.form-style-5 legend {
+    font-size: 1.4em;
+    margin-bottom: 10px;
+    margin-left: -40px;
+}
+
+.form-style-5 label, .form-style-5 input {
+    display: block;
+    margin-bottom: 8px;
+}
+.form-style-5 div.form-group{
+    display: block;
+}
+.form-style-5 div.form-group label, .form-style-5 div.form-group input{
+    display: inline-block;
+}
+.form-style-5 div.form-group label{
+    width: 100px;
+    
+    font-size: 16px;
+}
+
+.form-style-5 div.form-group input,
+.form-style-5 input[type="text"],
+.form-style-5 input[type="date"],
+.form-style-5 input[type="datetime"],
+.form-style-5 input[type="email"],
+.form-style-5 input[type="number"],
+.form-style-5 input[type="search"],
+.form-style-5 input[type="time"],
+.form-style-5 input[type="url"],
+.form-style-5 input[type="file"],
+.form-style-5 textarea,
+.form-style-5 select {
+    font-family: serif;
+    background: #FFF(255,255,255,.1);
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    margin: 0;
+    outline: 0;
+    padding: 7px;
+    width: 100%;
+    box-sizing: border-box; 
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box; 
+    background-color: #FFFFFF;
+    color:#8a97a0;
+    -webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+    margin-bottom: 30px;
+    
+}
+.form-style-5 input[type="text"]:focus,
+.form-style-5 input[type="date"]:focus,
+.form-style-5 input[type="datetime"]:focus,
+.form-style-5 input[type="email"]:focus,
+.form-style-5 input[type="number"]:focus,
+.form-style-5 input[type="search"]:focus,
+.form-style-5 input[type="time"]:focus,
+.form-style-5 input[type="url"]:focus,
+.form-style-5 textarea:focus,
+.form-style-5 select:focus{
+    background:#FFFFFF;
+}
+.form-style-5 select{
+    -webkit-appearance: menulist-button;
+    height:35px;
+}
+.form-style-5 .number {
+    background: blueviolet;
+    color: #fff;
+    height: 30px;
+    width: 30px;
+    display: inline-block;
+    font-size: 0.8em;
+    margin-right: 4px;
+    line-height: 30px;
+    text-align: center;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.2);
+    border-radius: 15px 15px 15px 0px;
+}
+
+.form-style-5 input[type="submit"],
+.form-style-5 input[type="button"]
+{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    position: relative;
+    display: block;
+    padding: 10px;
+    color: #FFFFFF;
+    margin: 0 auto;
+    background: #f44336;/*#1abc9c;*/
+    font-size: 18px;
+    text-align: center;
+    font-style: normal;
+    width: 50%;
+    border: 1px solid rgb(83, 42, 51)/*#16a085*/;
+    border-width: 1px 1px 1px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+}
+.form-style-5 input[type="button"].small-button {
+    position: relative;
+    padding: 3px 15px 3px 15px;
+    margin-left: 2px;
+    color: #FFF;
+    margin: 0 auto;
+    background: #48282F;/*#1abc9c;*/
+    text-align: center;
+    font-style: normal;
+    border: 1px solid rgb(83, 42, 51)/*#16a085*/;
+    border-width: 1px 1px 3px;
+    margin-bottom: 10px;
+    width: auto;
+    border-radius: 5px;
+}
+.form-style-5 div.inline input{
+    display: inline;
+}
+.form-style-5 input[type="submit"]:hover,
+.form-style-5 input[type="button"]:hover
+{
+    background: rgb(83, 42, 51);/*#109177;*/
+}
+
+.form-style-5 ul#position_list{
+    margin: 0 0 20px 0;
+    padding: 0;
+}
+
+.form-style-5 ul#position_list li {
+  cursor: pointer;
+  position: relative;
+  padding: 12px 8px 12px 40px;
+  list-style-type: none;
+  background: #eee;
+  font-size: 18px;
+  transition: 0.2s;
+  overflow-x: auto;
+  width: 70%;
+  
+  /* make the list items unselectable */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Set all odd list items to a different color (zebra-stripes) */
+.form-style-5 ul#position_list li:nth-child(odd) {
+  background: #f9f9f9;
+}
+
+/* Darker background-color on hover */
+.form-style-5 ul#position_list li:hover {
+  background: #ddd;
+}
+
+/* When clicked on, add a background color and strike out text */
+.form-style-5 ul#position_list li.checked {
+  background: #888;
+  color: #fff;
+  text-decoration: line-through;
+}
+
+/* Add a "checked" mark when clicked on */
+.form-style-5 ul#position_list li.checked::before {
+  content: '';
+  position: absolute;
+  border-color: #fff;
+  border-style: solid;
+  border-width: 0 2px 2px 0;
+  top: 10px;
+  left: 16px;
+  transform: rotate(45deg);
+  height: 15px;
+  width: 7px;
+}
+
+/* Style the close button */
+.close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 12px 16px 12px 16px;
+}
+
+.close:hover {
+  background-color: #f44336;
+  color: white;
+}
