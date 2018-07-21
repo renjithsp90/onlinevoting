@@ -79,21 +79,21 @@
     <div id="hpage">
       <h1 style="font-family: cursive; font-weight: bold; font-size: 28px;"><u>New Candidate</u></h1>
       <div class="form-style-5">
-          <form>
+          <form id="form">
               <fieldset>
                   <legend><span class="number">1</span> Polling Details</legend>
-                  <select>
+                  <select name="dd-polls" id="dd-polls">
                     <option>Select poll</option>
                   </select>
-                  <select>
+                  <select name="dd-positions" id="dd-positions">
                     <option>Select Position</option>
                   </select>
                   
               </fieldset>   
               <fieldset>
-                <legend><span class="number">1</span> Candidate Details</legend>
+                <legend><span class="number">2</span> Candidate Details</legend>
   
-                <label for="first_name">First Name</label>
+                <!--label for="first_name">First Name</label>
                 <input type="text" id="first_name" style="width: 100%" name="first_name" placeholder="First name"> 
   
                 <label for="last_name">Last Name</label>
@@ -107,9 +107,35 @@
   
                 <label for="image">Image</label>
                 <input type="file" id="image" style="width: 100%" name="image" placeholder="Upload Your Image">
-  
+              -->
+              <input type="text" style="display: none" name="user_id" id="user_id" value="" />
+              <label for="firstname">First Name:</label>
+                    <input type="text" name="f_name" id="f_name" value="" required pattern="^[ A-Za-z]+$" title="Only Strings"/>
+   
+                  <label for="middlename">Middle Name:</label>
+                    <input type="text" name="m_name" id="m_name" value=""   pattern="^[ A-Za-z]+$" title="Only Strings"/>
+                  
+
+                  <label for="lastname">Last Name:</label>
+                    <input type="text" name="l_name" id="l_name" value=""  required pattern="^[ A-Za-z]+$" title="Only Strings"/>
+                  
+
+                  <label for="dob">Date of Birth:</label>
+                    <input type="date" name="dob" id= "dob" value="" required />
+                  
+                
+                  <label for="gender">Gender:</label>
+                    <input type="radio" name="gender" id="male" value="Male" >Male
+                    <input type="radio" name="gender" id="female" value="Female" >Female
+                  
+
+                  <label for="email">Email ID:</label>
+                      <input type="email" name="email" id="email" value="" required 
+                      pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
+                       title="Email should be in format like abc@xyz.com"/>
+              
             </fieldset>            
-              <input type="submit" value="Save Candidate" />
+              <input type="button" id="submit" value="Save Candidate" />
           </form>
       </div>
     </div>
@@ -216,5 +242,7 @@
       }
     }
     </script>
+    <script type="text/javascript" src="../js/loadPolls.js"></script>
+    <script type="text/javascript" id="form_processor" data-type="candidate" src="../js/formProcess.js"></script>
 </body>
 </html>

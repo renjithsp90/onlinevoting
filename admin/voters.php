@@ -78,18 +78,18 @@
         <div id="hpage">
             <h1 style="font-family: cursive; font-weight: bold; font-size: 28px;"><u>New Voter/User</u></h1>
             <div class="form-style-5">
-                <form>
+                <form id="form">
                     <fieldset>
                         <legend><span class="number">1</span> Polling Details</legend>
-                        <select>
+                        <select id="dd-polls" name="dd-polls">
                           <option>Select poll</option>
                         </select>
                         
                     </fieldset>   
                     <fieldset>
-                      <legend><span class="number">1</span> User/Voter Details</legend>
+                      <legend><span class="number">2</span> User/Voter Details</legend>
         
-                      <label for="first_name">First Name</label>
+                      <!--<label for="first_name">First Name</label>
                       <input type="text" id="first_name" style="width: 100%" name="first_name" placeholder="First name"> 
         
                       <label for="last_name">Last Name</label>
@@ -100,9 +100,34 @@
         
                       <label for="mobile">Mobile Number</label>
                       <input type="text" id="mobile" style="width: 100%" name="mobile" placeholder="Mobile Number">
-        
+                    -->
+                    <input type="text" style="display: none" name="user_id" id="user_id" value="" />
+              <label for="firstname">First Name:</label>
+                    <input type="text" name="f_name" id="f_name" value="" required pattern="^[ A-Za-z]+$" title="Only Strings"/>
+   
+                  <label for="middlename">Middle Name:</label>
+                    <input type="text" name="m_name" id="m_name" value=""   pattern="^[ A-Za-z]+$" title="Only Strings"/>
+                  
+
+                  <label for="lastname">Last Name:</label>
+                    <input type="text" name="l_name" id="l_name" value=""  required pattern="^[ A-Za-z]+$" title="Only Strings"/>
+                  
+
+                  <label for="dob">Date of Birth:</label>
+                    <input type="date" name="dob" id= "dob" value="" required />
+                  
+                
+                  <label for="gender">Gender:</label>
+                    <input type="radio" name="gender" id="male" value="Male" >Male
+                    <input type="radio" name="gender" id="female" value="Female" >Female
+                  
+
+                  <label for="email">Email ID:</label>
+                      <input type="email" name="email" id="email" value="" required 
+                      pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
+                       title="Email should be in format like abc@xyz.com"/>
                   </fieldset>            
-                    <input type="submit" value="Add Voter" />
+                    <input type="button" id="submit" value="Add Voter" />
                 </form>
             </div>
           </div>
@@ -154,7 +179,7 @@
 
 <script>
     // Create a "close" button and append it to each list item
-    var myNodelist = document.getSelection("#position_list li");
+    /*var myNodelist = document.getSelection("#position_list li");
     var i;
     for (i = 0; i < myNodelist.length; i++) {
       var span = document.createElement("SPAN");
@@ -207,7 +232,9 @@
           div.style.display = "none";
         }
       }
-    }
+    }*/
     </script>
+    <script type="text/javascript" src="../js/loadPolls.js"></script>
+    <script type="text/javascript" id="form_processor" data-type="voter" src="../js/formProcess.js"></script>
 </body>
 </html>

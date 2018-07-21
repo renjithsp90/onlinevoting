@@ -1,0 +1,14 @@
+{
+    "name": "varun/onlinevoting",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Varun Sankar",
+            "email": "37424416+sivav1@users.noreply.github.com"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "^7.2"
+    }
+}
