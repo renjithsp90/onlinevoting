@@ -4,7 +4,7 @@ require_once(ROOT . '/model/model.php');
 
 class poll_details extends model {
 
-    public $user_id, $f_name, $m_name, $l_name, $email, $gender, $dob, $table_name;
+    public $user_id, $admin_id, $poll_head, $poll_description, $start_date, $end_date;
 
     function __construct(){
         $this->table_name = "poll_details";
@@ -26,13 +26,7 @@ class poll_details extends model {
         foreach(parent::$fields as $field) {
             $res_array[$field] = $this->{$field};
         }
-        /*$user_array["user_id"] = $this->user_id;
-        $user_array["f_name"] = $this->f_name;
-        $user_array["m_name"] = $this->m_name;
-        $user_array["l_name"] = $this->l_name;
-        $user_array["email"] = $this->email;
-        $user_array["gender"] = $this->gender;
-        $user_array["dob"] = $this->dob;*/
+        return $res_array;  
     }
 
     public function savePollDetails() {

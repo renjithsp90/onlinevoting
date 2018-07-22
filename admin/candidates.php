@@ -11,6 +11,7 @@
 
     <link rel="stylesheet" href="../css/layout.css" type="text/css" />
     <link rel="stylesheet" href="../css/form.css" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
 
     <script src="https://unpkg.com/react@16.0.0/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@16.0.0/umd/react-dom.development.js"></script>
@@ -57,7 +58,7 @@
       <li  class="active"><a href="candidates.html">Candidates</a>
         <ul>
           <li><a href="#" onclick="changePage('addcandidate')">Add Candidate</a></li>
-          <li><a href="#" onclick="changePage('updatecandidate')">Update Candidate</a></li>
+          <li><a href="update_candidate.php">Update Candidate</a></li>
           <li class="last"><a href="#" onclick="changePage('deletecandidate')">Delete Candidate</a></li>
         </ul>
       </li> 
@@ -80,7 +81,7 @@
       <h1 style="font-family: cursive; font-weight: bold; font-size: 28px;"><u>New Candidate</u></h1>
       <div class="form-style-5">
           <form id="form">
-              <fieldset>
+              <fieldset id="fld-pollingDetails">
                   <legend><span class="number">1</span> Polling Details</legend>
                   <select name="dd-polls" id="dd-polls">
                     <option>Select poll</option>
@@ -125,8 +126,8 @@
                   
                 
                   <label for="gender">Gender:</label>
-                    <input type="radio" name="gender" id="male" value="Male" >Male
-                    <input type="radio" name="gender" id="female" value="Female" >Female
+                    <input type="radio" name="gender" id="Male" value="Male" >Male
+                    <input type="radio" name="gender" id="Female" value="Female" >Female
                   
 
                   <label for="email">Email ID:</label>
@@ -242,6 +243,7 @@
       }
     }
     </script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="../js/loadPolls.js"></script>
     <script type="text/javascript" id="form_processor" data-type="candidate" src="../js/formProcess.js"></script>
 </body>

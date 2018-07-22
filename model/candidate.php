@@ -87,4 +87,20 @@ class candidate extends model {
             throw new Exception ('Table ' . $this->table_name . ' not found..!!');
         }
     }
+
+    public function deleteCandidate($id) {
+        if($this->isTableExists($this->table_name)) {
+            $this->delete($this->table_name, 'candidate_id', $id);
+        } else {
+            throw new Exception ('Table ' . $this->table_name . ' not found..!!');
+        }
+    }
+
+    public function deleteCandidateByUserID($id) {
+        if($this->isTableExists($this->table_name)) {
+            $this->delete($this->table_name, 'user_id', $id);
+        } else {
+            throw new Exception ('Table ' . $this->table_name . ' not found..!!');
+        }
+    }
 }

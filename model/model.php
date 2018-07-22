@@ -24,7 +24,7 @@ class model extends db{
 	 */
     public function select($table, $rows = '*', $where = null, $order = null)
     {
-        $this->result = null;
+        $this->result = array();
         $q = 'SELECT '.$rows.' FROM '.$table;
         if($where != null)
             $q .= ' WHERE '.$where;
@@ -124,18 +124,31 @@ class model extends db{
     }
 
     public function map($res_obj) {
-        //$res_class = new \stdClass();
         foreach(self::$fields as $field) {
             $this->{$field} = $res_obj[$field];
         }
-        /*$user->user_id = $res_obj['user_id'];
-        $user->f_name = $res_obj['f_name'];
-        $user->m_name = $res_obj['m_name'];
-        $user->l_name = $res_obj['l_name'];
-        $user->email = $res_obj['email'];
-        $user->gender = $res_obj['gender'];
-        $user->dob = $res_obj['dob'];*/
-        //return $res_class;
+    }
+
+    public function delete($table, $field, $value)
+    {
+        $q = "DELETE FROM `". $table . "`";
+        if($field != null && $value != null) {
+            $q .= " WHERE (  `" . $field . "` = '" . $value . "' ) ";
+        }
+        if($this->isTableExists($table))
+        { 
+            $query = @mysql_query($q);
+            if($query)
+            {           
+                return true; 
+            }
+            else
+            {
+                return false; 
+            }
+        }
+    else
+        return false; 
     }
 }
 ?>

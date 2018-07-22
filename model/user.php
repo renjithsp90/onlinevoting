@@ -28,20 +28,18 @@ class user extends model {
             $res_array[$field] = $this->{$field};
         }
         return $res_array;
-        /*$user_array["user_id"] = $this->user_id;
-        $user_array["f_name"] = $this->f_name;
-        $user_array["m_name"] = $this->m_name;
-        $user_array["l_name"] = $this->l_name;
-        $user_array["email"] = $this->email;
-        $user_array["gender"] = $this->gender;
-        $user_array["dob"] = $this->dob;*/
     }
 
     public function saveUser() {
         if($this->isTableExists($this->table_name)) {
             if(!empty($this->user_id)) {
-                $where_param = "(`user_id` = '" . $this->user_id . "')";
-                //$this->update($this->table_name, $set, $where_param);
+                $where_param = " `user_id` = '" . $this->user_id . "'";
+                $set_param = "";
+                foreach(parent::$fields as $field) {
+                    $set_param .= "`" . $field . "`='" . $this->{$field} . "',"; 
+                }
+                $set_param = substr($set_param, 0, -1);
+                return $this->update($this->table_name, $set_param, $where_param);
             } else {
                 $this->user_id = 'null';
                 return $this->insert($this->table_name, parent::$fields, $this->toArray());
@@ -60,7 +58,12 @@ class user extends model {
             throw new Exception ('Table ' . $this->table_name . ' not found..!!');
         }
     }
-}
 
-$u = new user();
-$u->getUserByID(9);
+    public function deleteUser($id) {
+        if($this->isTableExists($this->table_name)) {
+            $this->delete($this->table_name, 'user_id', $id);
+        } else {
+            throw new Exception ('Table ' . $this->table_name . ' not found..!!');
+        }
+    }
+}

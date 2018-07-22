@@ -11,6 +11,7 @@
 
     <link rel="stylesheet" href="../css/layout.css" type="text/css" />
     <link rel="stylesheet" href="../css/form.css" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
 
     <script src="https://unpkg.com/react@16.0.0/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@16.0.0/umd/react-dom.development.js"></script>
@@ -39,7 +40,7 @@
 <div class="wrapper col1">
   <div id="header">
     <div id="logo">
-      <h1><img src="../images/logo_online_voting.png" /></h1>
+        <h1><img src="../images/logo_online_voting.png" /></h1>
     </div>
     <div class="fl_right">      
       <p>Tel: 022 526 3841 | Mail: info@onlinevoting.com</p>
@@ -51,17 +52,17 @@
 <div class="wrapper col2">
   <div id="topnav">
     <ul>
-      <li><a href="index.php">Home</a></li>
-      <li><a href="poll.php">New Poll</a></li> 
-      <li class="active"><a href="positions.php">Positions</a>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="poll.html">New Poll</a></li> 
+      <li><a href="positions.html">Positions</a></li>
+      <li  class="active"><a href="candidates.html">Candidates</a>
         <ul>
-            <li><a href="#" onclick="changePage('addposition')">Add New Position</a></li>
-            <li><a href="#" onclick="changePage('updateposition')">Update Position</a></li>
-            <li class="last"><a href="#" onclick="changePage('deleteposition')">Delete Position</a></li>
+          <li><a href="#" onclick="changePage('addcandidate')">Add Candidate</a></li>
+          <li><a href="update_candidate.php">Update Candidate</a></li>
+          <li class="last"><a href="#" onclick="changePage('deletecandidate')">Delete Candidate</a></li>
         </ul>
-        </li>
-      <li><a href="candidates.php">Candidates</a></li> 
-      <li><a href="voters.php">Voters</a></li> 
+      </li> 
+      <li><a href="voters.html">Voters</a></li> 
     </ul>
   </div>
 </div>
@@ -76,29 +77,22 @@
 <!-- ####################################################################################################### -->
 <div class="wrapper col4">
     <div id="container" style="margin-top: 5px;">
-    <div id="hpage">
-      <h1 style="font-family: cursive; font-weight: bold; font-size: 28px;"><u>New Position</u></h1>
-      <div class="form-style-5">
-        <form>
-          <fieldset>
-              <legend><span class="number">1</span> Position Details</legend>
-              <select id="dd-polls" placeholder="Select Poll">
-                <option default>-- Select Poll --</option>
-              </select>
-  
-              <div class="inline" style="display: inline;">
-                  <input type="text" id="position" style="width: 85%" name="position" placeholder="Position *">
-                  <input type="button" id="btn-addNode" value="Add" class="small-button" >
-              </div>
-              <ul id="ul-positions">
-                  
-              </ul>
-          </fieldset>
-          <input type="submit" value="Save Poll" />
-        </form>
-      </div>
+        <h1 style="font-family: cursive; font-weight: bold; font-size: 28px;"><u>Polls</u></h1>
+        <div id="hpage">
+            <table class="table" id="tbl-polls">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Poll Head</th>
+                    <th>Poll Description</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+            </table>
+        </div>
     </div>
-  </div>
 </div>
 <!-- ####################################################################################################### -->
 <div class="wrapper col5">
@@ -143,8 +137,10 @@
     <br class="clear" />
   </div>
 </div>
-
-<!--<script type="text/javascript" src="../js/positions.js"></script>-->
-<script type="text/javascript" src="../js/loadPolls.js" type="module"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/json2html/1.2.0/json2html.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.json2html/1.2.0/jquery.json2html.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="../js/loadPolls.js" type="module"></script>
 </body>
 </html>

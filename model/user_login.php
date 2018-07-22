@@ -66,4 +66,20 @@ class user_login extends model {
             throw new Exception ('Table ' . $this->table_name . ' not found..!!');
         }
     }
+
+    public function deleteUserLogin($id) {
+        if($this->isTableExists($this->table_name)) {
+            $this->delete($this->table_name, 'login_id', $id);
+        } else {
+            throw new Exception ('Table ' . $this->table_name . ' not found..!!');
+        }
+    }
+
+    public function deleteUserLoginByUserID($id) {
+        if($this->isTableExists($this->table_name)) {
+            $this->delete($this->table_name, 'user_id', $id);
+        } else {
+            throw new Exception ('Table ' . $this->table_name . ' not found..!!');
+        }
+    }
 }

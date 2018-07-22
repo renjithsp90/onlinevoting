@@ -4,7 +4,7 @@ require_once(ROOT . '/model/model.php');
 
 class voter extends model {
 
-    public $candidate_id, $poll_id, $position_id, $user_id;
+    public $id, $poll_id, $user_id;
 
     function __construct(){
         $this->table_name = "voters";
@@ -45,12 +45,39 @@ class voter extends model {
         }
     }
 
+    public function getVoterByUserID($id) {
+        if($this->isTableExists($this->table_name)) {
+            $where_param = "(`user_id` = '" . $id . "')";
+            $this->select($this->table_name, '*', $where_param);
+            $position_details_obj = $this->result;
+            return $position_details_obj;
+        } else {
+            throw new Exception ('Table ' . $this->table_name . ' not found..!!');
+        }
+    }
+
     public function getVotersByPollID($id) {
         if($this->isTableExists($this->table_name)) {
             $where_param = "(`poll_id` = '" . $id . "')";
             $this->select($this->table_name, '*', $where_param);
             $position_details_obj = $this->result;
             return $position_details_obj;
+        } else {
+            throw new Exception ('Table ' . $this->table_name . ' not found..!!');
+        }
+    }
+
+    public function deleteVoter($id) {
+        if($this->isTableExists($this->table_name)) {
+            $this->delete($this->table_name, 'id', $id);
+        } else {
+            throw new Exception ('Table ' . $this->table_name . ' not found..!!');
+        }
+    }
+
+    public function deleteVoterByUserID($id) {
+        if($this->isTableExists($this->table_name)) {
+            $this->delete($this->table_name, 'user_id', $id);
         } else {
             throw new Exception ('Table ' . $this->table_name . ' not found..!!');
         }

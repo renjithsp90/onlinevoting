@@ -1,6 +1,6 @@
 
 // Create a "close" button and append it to each list item
-var myNodelist = document.getSelection("#position_list li");
+/*var myNodelist = document.getSelection("#position_list li");
 var i;
 for (i = 0; i < myNodelist.length; i++) {
   var span = document.createElement("SPAN");
@@ -26,32 +26,17 @@ list.addEventListener('click', function(ev) {
   if (ev.target.tagName === 'LI') {
     ev.target.classList.toggle('checked');
   }
-}, false);
+}, false);*/
 
 // Create a new list item when clicking on the "Add" button
-function newElement() {
+function newElement(nodeObj) {
   var li = document.createElement("li");
-  var inputValue = document.getElementById("position").value;
-  var pollID = document.getElementById("poll_id").value;
+  console.log("INPUT", nodeObj);
+  var t = document.createTextNode(nodeObj.position_name);
 
-  var t = document.createTextNode(inputValue);
+  li.setAttribute("id", nodeObj.position_id);
   li.appendChild(t);
-  if (inputValue === '') {
-    alert("You must write something!");
-  } else {
-
-    $.ajax({
-      type: "GET",
-      url: "../controller/savePositions.php",
-      data: "poll_id=" + pollID + "&position_name=" + inputValue,
-      success: function(data) {
-         alert("sucess");
-      }
-  });
-
-    document.getElementById("position_list").appendChild(li);
-  }
-  document.getElementById("position").value = "";
+  document.getElementById("ul-positions").appendChild(li);
 
   var span = document.createElement("SPAN");
   var txt = document.createTextNode("\u00D7");
@@ -59,10 +44,11 @@ function newElement() {
   span.appendChild(txt);
   li.appendChild(span);
 
+  var close = document.getElementsByClassName("close");
   for (i = 0; i < close.length; i++) {
     close[i].onclick = function() {
       var div = this.parentElement;
-      div.remove();//.style.display = "none";
+      div.remove();
     }
   }
 }

@@ -143,12 +143,12 @@ font-weight: bolder;
     background: rgb(83, 42, 51);/*#109177;*/
 }
 
-.form-style-5 ul#position_list{
+.form-style-5 ul#ul-positions{
     margin: 0 0 20px 0;
     padding: 0;
 }
 
-.form-style-5 ul#position_list li {
+.form-style-5 ul#ul-positions li {
   cursor: pointer;
   position: relative;
   padding: 12px 8px 12px 40px;
@@ -167,24 +167,24 @@ font-weight: bolder;
 }
 
 /* Set all odd list items to a different color (zebra-stripes) */
-.form-style-5 ul#position_list li:nth-child(odd) {
+.form-style-5 ul#ul-positions li:nth-child(odd) {
   background: #f9f9f9;
 }
 
 /* Darker background-color on hover */
-.form-style-5 ul#position_list li:hover {
+.form-style-5 ul#ul-positions li:hover {
   background: #ddd;
 }
 
 /* When clicked on, add a background color and strike out text */
-.form-style-5 ul#position_list li.checked {
+.form-style-5 ul#ul-positions li.checked {
   background: #888;
   color: #fff;
   text-decoration: line-through;
 }
 
 /* Add a "checked" mark when clicked on */
-.form-style-5 ul#position_list li.checked::before {
+.form-style-5 ul#ul-positions li.checked::before {
   content: '';
   position: absolute;
   border-color: #fff;

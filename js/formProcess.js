@@ -4,13 +4,14 @@ $(document).ready(function(){
         var data = $('#form').serializeArray().reduce(function(obj, item) {
             obj[item.name] = item.value;
             obj['type'] = type;
-            obj['gender'] = $('input[name="gender"  ]:checked').val();
+            obj['gender'] = $('input[name="gender"]:checked').val();
+            obj['method'] = 'add';
             return obj;
         }, {});
         console.log("DATA", data);
         $.ajax({
             type: "GET",
-            url: "../controller/saveUser.php",
+            url: "../controller/UsersController.php",
             data: data,
             success: function(data) {
                 alert((data));
