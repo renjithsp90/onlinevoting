@@ -1,9 +1,3 @@
-<?php
-
-  require_once 'connect.php';
-  //require '/account.php';
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -17,12 +11,14 @@
 
 
     <link rel="stylesheet" href="css/layout.css" type="text/css" />
+    <link rel="stylesheet" href="css/form.css" type="text/css" />
     
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/jquery.slidepanel.setup.js"></script>
     <script type="text/javascript" src="js/jquery.ui.min.js"></script>
     <script type="text/javascript" src="js/jquery.tabs.setup.js"></script>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+
     
     
     <title>Online Voting</title>
@@ -98,7 +94,7 @@
                   </label>
                   <label for="loginpassword">Password:
                     <input type="password" name="loginpassword" id="loginpassword" value=""  required
-                      title="" />
+                     pattern="^(?=.*\d)(?=.*[a-zA-Z])[a-zA-Z0-9]{7,}$" title="" />
                   </label>
                   
                   <p>
@@ -164,50 +160,31 @@
         </div>
       </div>
       <!-- ####################################################################################################### -->
-      <div class="wrapper col3">
-        <div id="featured_slide">
-          <div id="featured_wrap">
-            <ul id="featured_tabs">
-              <li><a href="#fc1">Organisation Name 1<br />
-                <span>Internal Election</span></a></li>
-              <li><a href="#fc2">Organisation Name 2<br />
-                <span>Students union election</span></a></li>
-              <li><a href="#fc3">Organisation Name 3<br />
-                <span>Administration election</span></a></li>
-              <li class="last"><a href="#fc4">Organisation Name 4<br />
-                <span>College union Election</span></a></li>
-            </ul>
-            <div id="featured_content">
-              <div class="featured_box" id="fc1"><img src="images/1.gif" alt="" />
-                <!--<div class="floater"><a href="#">Continue to Result &raquo;</a></div>-->
-              </div>
-              <div class="featured_box" id="fc2"><img src="images/2.gif" alt="" />
-                <!--<div class="floater"><a href="#">Continue to Result &raquo;</a></div>-->
-              </div>
-              <div class="featured_box" id="fc3"><img src="images/3.gif" alt="" />
-                <!--<div class="floater"><a href="#">Continue to Result &raquo;</a></div>-->
-              </div>
-              <div class="featured_box" id="fc4"><img src="images/4.gif" alt="" />
-                <!--<div class="floater"><a href="#">Continue to Result &raquo;</a></div>-->
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      
       <!-- ####################################################################################################### -->
       <div class="wrapper col4">
         <div id="container">
           <div id="hpage">
             <u><h1 style="font-size: 26px;">Current Polling</h1></u>
-            <table class="table" id="tbl-polls">
+            <div class="form-style-5">
+          <form id="form">
+              <fieldset id="fld-pollingDetails">
+                  <legend><span class="number">1</span> Polling Details</legend>
+                  <select name="dd-polls" id="dd-polls">
+                    <option>Select poll</option>
+                  </select>
+                  <select name="dd-positions" id="dd-positions">
+                    <option>Select Position</option>
+                  </select>
+                  
+              </fieldset>  
+              </form>
+              </div>
+            <table class="table" id="tbl-result">
               <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Poll Head</th>
-                    <th>Description</th>
-                    <th>Start Date</th>
-                    <th>End Date</th>
-                    <th>Action</th>
+                    <th>Candidate</th>
+                    <th>Poll Count</th>
                 </tr>
               </thead>
             </table>

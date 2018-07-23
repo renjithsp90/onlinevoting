@@ -24,7 +24,7 @@ class model extends db{
 	 */
     public function select($table, $rows = '*', $where = null, $order = null)
     {
-        $this->result = array();
+        //$this->result = array();
         $q = 'SELECT '.$rows.' FROM '.$table;
         if($where != null)
             $q .= ' WHERE '.$where;
@@ -33,7 +33,7 @@ class model extends db{
         if($this->isTableExists($table))
         {
             $query = @mysql_query($q);
-            $res = array();
+            $res_array = array();
             if($query)
             {
                 $this->numResults = mysql_num_rows($query);
@@ -43,18 +43,25 @@ class model extends db{
                     $key = array_keys($r); 
                     for($x = 0; $x < count($key); $x++)
                     {
-                        
                         if(!is_int($key[$x]))
                         {
-                            if(mysql_num_rows($query) > 1)
+                            if(mysql_num_rows($query) > 1){
                                 $this->result[$i][$key[$x]] = $r[$key[$x]];
-                            else if(mysql_num_rows($query) < 1)
+                            } else if(mysql_num_rows($query) < 1) {
                                 $this->result = null;
-                            else
+                            } else {
                                 $this->result[$key[$x]] = $r[$key[$x]]; 
+                            }
                         }
                     }
-                }           
+                }
+                if($this->result != null) {
+                    if(array_key_exists(self::$fields[0], $this->result)) {
+                        $res_array = [];
+                        array_push($res_array, $this->result);
+                        $this->result = $res_array;
+                    }
+                }
                 return true; 
             }
             else
@@ -127,7 +134,7 @@ class model extends db{
 
     public function map($res_obj) {
         foreach(self::$fields as $field) {
-            $this->{$field} = $res_obj[$field];
+            $this->{$field} = $res_obj[0][$field];
         }
     }
 

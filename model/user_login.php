@@ -56,6 +56,17 @@ class user_login extends model {
         }
     }
 
+    public function getCandidateByUsernameAndPassword($username, $password) {
+        if($this->isTableExists($this->table_name)) {
+            $where_param = "(`username` = '" . $username . "' AND `password` = '" . $password . "')";
+            $this->select($this->table_name, '*', $where_param);
+            $position_details_obj = $this->result;
+            return $position_details_obj;
+        } else {
+            throw new Exception ('Table ' . $this->table_name . ' not found..!!');
+        }
+    }
+
     public function getCandidateByUsernamw($username) {
         if($this->isTableExists($this->table_name)) {
             $where_param = "(`username` = '" . $username . "')";

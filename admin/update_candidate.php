@@ -1,3 +1,6 @@
+<?php
+	require 'account.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -26,6 +29,8 @@
   </head>
   <body>
 <div class="wrapper col0">
+<input type="text" style="display: none" value='<?php echo $_SESSION["user_id"]?>' id="txtUserID" >
+<input type="text" style="display: none" value='<?php echo $_SESSION["role"]?>' id="txtRole" >
   <div id="topbar">    
     <div id="loginpanel">
       <ul>

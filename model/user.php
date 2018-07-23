@@ -53,7 +53,7 @@ class user extends model {
         if($this->isTableExists($this->table_name)) {
             $where_param = "(`user_id` = '" . $id . "')";
             $this->select($this->table_name, '*', $where_param);
-            $this->map($this->result);
+            $this->map((array)$this->result);
         } else {
             throw new Exception ('Table ' . $this->table_name . ' not found..!!');
         }

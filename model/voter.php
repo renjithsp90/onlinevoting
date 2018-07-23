@@ -49,6 +49,7 @@ class voter extends model {
         if($this->isTableExists($this->table_name)) {
             $where_param = "(`user_id` = '" . $id . "')";
             $this->select($this->table_name, '*', $where_param);
+            //$this->map($this->result);
             $position_details_obj = $this->result;
             return $position_details_obj;
         } else {

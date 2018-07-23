@@ -1,3 +1,6 @@
+<?php
+	require 'account.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -26,11 +29,13 @@
   </head>
   <body>
 <div class="wrapper col0">
+<input type="text" style="display: none" value='<?php echo $_SESSION["user_id"]?>' id="txtUserID" >
+<input type="text" style="display: none" value='<?php echo $_SESSION["role"]?>' id="txtRole" >
   <div id="topbar">    
     <div id="loginpanel">
       <ul>
-        <li class="right"><a>Log Out</a></li>
-        <li class="left">Hi, Renjith</li>        
+        <li class="right"><a href="../logout.php">Log Out</a></li>
+        <li class="left">Hi, <?php echo $voter_name; ?></li>        
       </ul>
     </div>
     <br class="clear" />
@@ -79,7 +84,7 @@
     <div id="container" style="margin-top: 5px;">
         <h1 style="font-family: cursive; font-weight: bold; font-size: 28px;"><u>Polls</u></h1>
         <div id="hpage">
-            <table class="table" id="tbl-polls">
+            <table class="table" id="tbl-polls" data-for = "voter">
                 <thead>
                 <tr>
                     <th>ID</th>

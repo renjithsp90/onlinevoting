@@ -1,6 +1,7 @@
 <?php
 require_once('const.php');
 require_once(ROOT . '/config.php');
+error_reporting(E_ALL ^ E_NOTICE);
 // load constants, populate in html, then run ...
 	/**
 	 * db class extending from config class
