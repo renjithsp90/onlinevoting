@@ -1,3 +1,6 @@
+<?php
+	require 'account.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -25,6 +28,8 @@
   </head>
   <body>
 <div class="wrapper col0">
+<input type="text" style="display: none" value='<?php echo $_SESSION["user_id"]?>' id="txtUserID" >
+<input type="text" style="display: none" value='<?php echo $_SESSION["role"]?>' id="txtRole" >
   <div id="topbar">    
     <div id="loginpanel">
       <ul>
@@ -51,17 +56,17 @@
 <div class="wrapper col2">
   <div id="topnav">
     <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="poll.html">New Poll</a></li> 
-      <li class="active"><a href="positions.html">Positions</a>
+      <li><a href="index.php">Home</a></li>
+      <li><a href="poll.php">New Poll</a></li> 
+      <li class="active"><a href="positions.php">Positions</a>
         <ul>
             <li><a href="#" onclick="changePage('addposition')">Add New Position</a></li>
             <li><a href="#" onclick="changePage('updateposition')">Update Position</a></li>
             <li class="last"><a href="#" onclick="changePage('deleteposition')">Delete Position</a></li>
         </ul>
         </li>
-      <li><a href="candidates.html">Candidates</a></li> 
-      <li><a href="voters.html">Voters</a></li> 
+      <li><a href="candidates.php">Candidates</a></li> 
+      <li><a href="voters.php">Voters</a></li> 
     </ul>
   </div>
 </div>
@@ -82,17 +87,15 @@
         <form>
           <fieldset>
               <legend><span class="number">1</span> Position Details</legend>
-              
-              <select>
-                  <option>Please select poll first</option>
+              <select id="dd-polls" placeholder="Select Poll">
+                <option default>-- Select Poll --</option>
               </select>
   
-                 
               <div class="inline" style="display: inline;">
                   <input type="text" id="position" style="width: 85%" name="position" placeholder="Position *">
-                  <input type="button" value="Add" class="small-button" onclick="newElement()">
+                  <input type="button" id="btn-addNode" value="Add" class="small-button" >
               </div>
-              <ul id="position_list">
+              <ul id="ul-positions">
                   
               </ul>
           </fieldset>
@@ -146,62 +149,7 @@
   </div>
 </div>
 
-<script>
-    // Create a "close" button and append it to each list item
-    var myNodelist = document.getSelection("#position_list li");
-    var i;
-    for (i = 0; i < myNodelist.length; i++) {
-      var span = document.createElement("SPAN");
-      var txt = document.createTextNode("\u00D7");
-      span.className = "close";
-      span.appendChild(txt);
-      myNodelist[i].appendChild(span);
-    }
-    
-    // Click on a close button to hide the current list item
-    var close = document.getElementsByClassName("close");
-    var i;
-    for (i = 0; i < close.length; i++) {
-      close[i].onclick = function() {
-        var div = this.parentElement;
-        div.style.display = "none";
-      }
-    }
-    
-    // Add a "checked" symbol when clicking on a list item
-    var list = document.querySelector('ul');
-    list.addEventListener('click', function(ev) {
-      if (ev.target.tagName === 'LI') {
-        ev.target.classList.toggle('checked');
-      }
-    }, false);
-    
-    // Create a new list item when clicking on the "Add" button
-    function newElement() {
-      var li = document.createElement("li");
-      var inputValue = document.getElementById("position").value;
-      var t = document.createTextNode(inputValue);
-      li.appendChild(t);
-      if (inputValue === '') {
-        alert("You must write something!");
-      } else {
-        document.getElementById("position_list").appendChild(li);
-      }
-      document.getElementById("position").value = "";
-    
-      var span = document.createElement("SPAN");
-      var txt = document.createTextNode("\u00D7");
-      span.className = "close";
-      span.appendChild(txt);
-      li.appendChild(span);
-    
-      for (i = 0; i < close.length; i++) {
-        close[i].onclick = function() {
-          var div = this.parentElement;
-          div.style.display = "none";
-        }
-      }
-    }
-    </script>
+<!--<script type="text/javascript" src="../js/positions.js"></script>-->
+<script type="text/javascript" src="../js/loadPolls.js" type="module"></script>
 </body>
 </html>

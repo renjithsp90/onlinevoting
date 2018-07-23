@@ -34,8 +34,8 @@
   <div id="topbar">    
     <div id="loginpanel">
       <ul>
-        <li class="right"><a>Log Out</a></li>
-        <li class="left">Hi, Renjith</li>        
+        <li class="right"><a href="../logout.php">Log Out</a></li>
+        <li class="left">Hi, <?php echo $voter_name; ?></li>        
       </ul>
     </div>
     <br class="clear" />
@@ -45,7 +45,7 @@
 <div class="wrapper col1">
   <div id="header">
     <div id="logo">
-      <h1><img src="../images/logo_online_voting.png" /></h1>
+        <h1><img src="../images/logo_online_voting.png" /></h1>
     </div>
     <div class="fl_right">      
       <p>Tel: 022 526 3841 | Mail: info@onlinevoting.com</p>
@@ -57,17 +57,17 @@
 <div class="wrapper col2">
   <div id="topnav">
     <ul>
-      <li><a href="index.php">Home</a></li>
-      <li><a href="poll.php">New Poll</a></li> 
-      <li class="active"><a href="positions.php">Positions</a>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="poll.html">New Poll</a></li> 
+      <li><a href="positions.html">Positions</a></li>
+      <li  class="active"><a href="candidates.html">Candidates</a>
         <ul>
-            <li><a href="#" onclick="changePage('addposition')">Add New Position</a></li>
-            <li><a href="#" onclick="changePage('updateposition')">Update Position</a></li>
-            <li class="last"><a href="#" onclick="changePage('deleteposition')">Delete Position</a></li>
+          <li><a href="#" onclick="changePage('addcandidate')">Add Candidate</a></li>
+          <li><a href="update_candidate.php">Update Candidate</a></li>
+          <li class="last"><a href="#" onclick="changePage('deletecandidate')">Delete Candidate</a></li>
         </ul>
-        </li>
-      <li><a href="candidates.php">Candidates</a></li> 
-      <li><a href="voters.php">Voters</a></li> 
+      </li> 
+      <li><a href="voters.html">Voters</a></li> 
     </ul>
   </div>
 </div>
@@ -81,42 +81,23 @@
 </div>-->
 <!-- ####################################################################################################### -->
 <div class="wrapper col4">
-  <div id="container" style="margin-top: 5px;">
-  
-  <div id="hpage">
-    <h1 style="font-family: cursive; font-weight: bold; font-size: 28px;"><u>Update Candidate</u></h1>
-    <div class="form-style-5">
-    <form>
-      <fieldset>
-          <legend><span class="number">1</span> Position Details</legend>
-          <select id="dd-polls" placeholder="Select Poll">
-            <option default>-- Select Poll --</option>
-          </select>
-
-          <<select id="dd-positions" placeholder="Select Poll">
-            <option default>-- Select Position --</option>
-          </select>
-      </fieldset>
-    </form>
+    <div id="container" style="margin-top: 5px;">
+        <h1 style="font-family: cursive; font-weight: bold; font-size: 28px;"><u>Polls</u></h1>
+        <div id="hpage">
+            <table class="table" id="tbl-polls" data-for = "voter">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Poll Head</th>
+                    <th>Poll Description</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+            </table>
+        </div>
     </div>
-    <table class="table" id="tbl-candidate">
-    <thead>
-      <tr>
-          <th>ID</th>
-          <th>First Name</th>
-          <th>Middle Name</th>
-          <th>Last Name</th>
-          <th>Email</th>
-          <th>Gender</th>
-          <th>DoB</th>
-          <th>Action</th>
-      </tr>
-    </thead>
-  </table>
-  </div>
-
-
-  </div>
 </div>
 <!-- ####################################################################################################### -->
 <div class="wrapper col5">
@@ -161,7 +142,6 @@
     <br class="clear" />
   </div>
 </div>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/json2html/1.2.0/json2html.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.json2html/1.2.0/jquery.json2html.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
@@ -169,9 +149,3 @@
 <script src="../js/loadPolls.js" type="module"></script>
 </body>
 </html>
-
-
-
-
-
-

@@ -1,5 +1,5 @@
 <?php
-	require '../account.php';
+	require 'account.php';
 ?>
 
 <!DOCTYPE html>
@@ -22,10 +22,12 @@
     <script type="text/javascript" src="../js/jquery.ui.min.js"></script>
     <script type="text/javascript" src="../js/jquery.tabs.setup.js"></script>
     <script type="text/javascript" src="../js/loadpage.js" ></script>
-
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
 </head>
 <body>
 <div class="wrapper col0">
+<input type="text" style="display: none" value='<?php echo $_SESSION["user_id"]?>' id="txtUserID" >
+<input type="text" style="display: none" value='<?php echo $_SESSION["role"]?>' id="txtRole" >
   <div id="topbar">    
     <div id="loginpanel">
       <ul>
@@ -61,19 +63,30 @@
   </div>
 </div>
 <!-- ####################################################################################################### -->
-<div class="wrapper col3">
+<!--<div class="wrapper col3">
   <div id="featured_slide">
     <div id="featured_wrap">      
       
     </div>
   </div>
-</div>
+</div>-->
 <!-- ####################################################################################################### -->
 <div class="wrapper col4">
-  <div id="container">
+  <div id="container" style="margin-top: 5px">
     <div id="hpage">
-      
-      
+    <h1 style="font-family: cursive; font-weight: bold; font-size: 28px;"><u>Active Polls</u></h1>
+    <table class="table" id="tbl-polls" data-for='admin'>
+    <thead>
+      <tr>
+          <th>ID</th>
+          <th>Poll Head</th>
+          <th>Description</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+
+      </tr>
+    </thead>
+  </table>
       <br class="clear" />
     </div>
   </div>
@@ -121,5 +134,10 @@
     <br class="clear" />
   </div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/json2html/1.2.0/json2html.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.json2html/1.2.0/jquery.json2html.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="../js/loadPolls.js" type="module"></script>
 </body>
 </html>

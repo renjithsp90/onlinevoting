@@ -1,2 +1,2 @@
 <?php
-	$conn = new mysqli('localhost:3307', 'root', '', 'online_voting') or die(mysqli_error());
+	$conn = new mysqli('localhost', 'root', 'password', 'online_voting') or die(mysqli_error());

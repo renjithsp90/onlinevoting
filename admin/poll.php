@@ -33,6 +33,16 @@
     xhttp.send();
 }
     </script>
+
+    <script>
+function al() {
+var data = $('#form').serializeArray().reduce(function(obj, item) {
+    obj[item.name] = item.value;
+    return obj;
+}, {});
+    alert(data);
+}
+</script>
     
     <title>Online Voting</title>
   </head>
