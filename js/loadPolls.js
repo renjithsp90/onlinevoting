@@ -75,36 +75,69 @@ $(document).ready(function() {
         });
     });
     ddPositions.change(function(){
-        var pollID = ddPolls.val();
+        var pollID = (ddPolls.length)? ddPolls.val() : searchParams.get('poll_id');
+        var isPolling = false;
+        var skipCols = [];
+        if(searchParams.has('isPolling')){
+            isPolling = true;
+            skipCols.push('email');
+            skipCols.push('gender');
+            skipCols.push('dob');
+        }
+
         var positionID = ddPositions.val();
         if(tblCandidate.length) {
+            var isPolled = false;
+            if(isPolling) {
+                $.ajax({
+                    type: "GET",
+                    url: "../controller/PollsController.php",
+                    data: { "poll_id": pollID, "position_id": positionID, "voter_id": 32, "method": "select" },
+                    success: function(data) {
+                        var pollDataObj = JSON.parse(data);
+                        if(pollDataObj.hasOwnProperty('poll_data_id')){
+                            isPolled = true;
+                        }
+                    }
+                });
+            }
             $.ajax({
                 type: "GET",
                 url: "../controller/UsersController.php",
                 data: { "dd-polls": pollID, "dd-positions": positionID, "type": "candidate", "method": "select" },
                 success: function(data) {
+                    console.log(data);
                     data = JSON.parse(data);
                     var candidate = data[0];
                     var columns = [];
                     for(var property in candidate){
-                            columns.push({
-                                data: property
-                            })
+                            if(skipCols.indexOf(property) <= -1){
+                                columns.push({
+                                    data: property
+                                })
+                            }
                         }
+                    var buttonStr = "<button class='edit'>edit</button><button class='delete'>delete</button>";
+                    if(isPolling){
+                        buttonStr = "<button class='poll'>poll</button>";
+                    }
                     columns.push({
                         "targets": -1,
                         "data": null,
-                        "defaultContent": "<button class='edit'>edit</button><button class='delete'>delete</button>"
+                        "defaultContent": buttonStr
                     });
                     
-                    if ($.fn.dataTable.isDataTable('#tbl-candidate')) {
+                    if ($.fn.dataTable.isDataTable('#tbl-candidate')  && !isPolled) {
                         table = tblCandidate.DataTable();
-                    } else {
+                    } else if(!isPolled) {
                         table = tblCandidate.DataTable({
                             data: data,
                             "processing": true,
                             columns: columns
                         });
+                    }
+                    else {
+                        alert("Already Voted..!")
                     }
                     $('#tbl-candidate tbody').on( 'click', 'button.delete', function () {
                         var src = table.row( $(this).parents('tr') ).data();
@@ -122,6 +155,27 @@ $(document).ready(function() {
                     $('#tbl-candidate tbody').on( 'click', 'button.edit', function () {
                         var src = table.row( $(this).parents('tr') ).data();
                         window.location = "candidates.php?user_id=" + src['user_id'];
+                    } );
+                    $('#tbl-candidate tbody').on( 'click', 'button.poll', function () {
+                        var src = table.row( $(this).parents('tr') ).data();
+                        if (confirm('Are you sure you want to vote for ' + src['f_name'] + ' ' + src['l_name'] + ' ?')) {
+                            $.ajax({
+                                type: "GET",
+                                url: "../controller/UsersController.php",
+                                data: {"user_id": src['user_id'], "type": "candidate", "method" : "select"} ,
+                                success: function(data) {
+                                    var candi = JSON.parse(data);
+                                    $.ajax({
+                                        type: "GET",
+                                        url: "../controller/PollsController.php",
+                                        data: {"poll_data_id" : '', "poll_id": pollID, "position_id": positionID, "candidate_id":candi['candidate_id'], "voter_id": 32, "type": "poll", "method" : "add"} ,
+                                        success: function(data) {
+                                            alert(data);
+                                        }
+                                    });
+                                }
+                            });
+                        }
                     } );
                 }
             });
@@ -177,11 +231,45 @@ $(document).ready(function() {
                         columns: columns
                     });
                 }
-                $('#tbl-polls tbody').on( 'click', 'button.delete', function () {
-                    alert('x');
+                $('#tbl-polls tbody').on( 'click', 'button.edit', function () {
                     var src = table.row( $(this).parents('tr') ).data();
-            
+                    window.location = "do_poll.php?poll_id=" + src['poll_id'] + "&isPolling=true";
                 } );
+            }
+        });
+    }
+    if(searchParams.has('poll_id')){
+        var pollID = searchParams.get('poll_id');
+        $.ajax({
+            type: "GET",
+            url: "../controller/PositionsController.php",
+            data: { "poll_id": pollID, "method": "select" },
+            success: function(data) {
+                data = JSON.parse(data);
+                ddPositions.find('option:not(:first)').remove();
+                if(data.length == null) {
+                    if(ddPositions.length) {
+                        ddPositions.append($('<option/>').attr("value", data.position_id).text(data.position_name));
+                    }
+                    if(ulPositions.length) {
+                        ulPositions.empty();
+                        $.getScript('../js/positions.js', function () {          
+                            newElement(data); 
+                        }); 
+                    }
+                } else {
+                    $.each(data, function(i, option) {
+                        if(ddPositions.length) {
+                            ddPositions.append($('<option/>').attr("value", option.position_id).text(option.position_name));
+                        }
+                        if(ulPositions.length) {
+                            ulPositions.empty();
+                            $.getScript('../js/positions.js', function () {          
+                                newElement(option); 
+                            });
+                        }
+                    });
+                }
             }
         });
     }

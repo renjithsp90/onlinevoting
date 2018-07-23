@@ -71,6 +71,13 @@ if(isset($_GET['method'])){
                 $json_str = json_encode($user_list);
                 echo $json_str;
             }
+            if(isset($_GET['user_id'])) {
+                $user_id = $_GET['user_id'];
+                $candidate = new candidate();
+                $candidate->getCandidateByUserID($user_id);
+                $json_str = json_encode($candidate->toArray());
+                echo $json_str;
+            }
         }
         if($type == 'user') {
             if(isset($_GET['user_id'])) {

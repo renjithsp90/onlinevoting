@@ -2,13 +2,13 @@
 require_once('../const.php');
 require_once(ROOT . '/model/model.php');
 
-class candidate extends model {
+class poll_data extends model {
 
-    public $candidate_id, $poll_id, $position_id, $user_id;
+    public $poll_data_id, $poll_id, $position_id, $candidate_id, $voter_id;
 
     function __construct(){
-        $this->table_name = "candidate";
-        parent::$fields = array("candidate_id", "position_id", "poll_id", "user_id");
+        $this->table_name = "poll_data";
+        parent::$fields = array("poll_data_id", "poll_id", "position_id", "candidate_id", "voter_id");
         parent::__construct();
     }
 
@@ -22,11 +22,11 @@ class candidate extends model {
 
     public function save() {
         if($this->isTableExists($this->table_name)) {
-            if(!empty($this->candidate_id)) {
-                $where_param = "(`candidate_id` = '" . $this->candidate_id . "')";
+            if(!empty($this->poll_data_id)) {
+                $where_param = "(`poll_data_id` = '" . $this->poll_data_id . "')";
                 //$this->update($this->table_name, $set, $where_param);
             } else {
-                $this->candidate_id = 'null';
+                $this->poll_data_id = '';
                 $res = $this->insert($this->table_name, parent::$fields, $this->toArray());
                 return $res;
             }
@@ -35,9 +35,9 @@ class candidate extends model {
         }
     }
 
-    public function getCandidateByID($id) {
+    public function getPollDataByID($id) {
         if($this->isTableExists($this->table_name)) {
-            $where_param = "(`candidate_id` = '" . $id . "')";
+            $where_param = "(`poll_data_id` = '" . $id . "')";
             $this->select($this->table_name, '*', $where_param);
             $this->map($this->result);  
         } else {
@@ -45,17 +45,7 @@ class candidate extends model {
         }
     }
 
-    public function getCandidateByUserID($id) {
-        if($this->isTableExists($this->table_name)) {
-            $where_param = "(`user_id` = '" . $id . "')";
-            $this->select($this->table_name, '*', $where_param);
-            $this->map($this->result);  
-        } else {
-            throw new Exception ('Table ' . $this->table_name . ' not found..!!');
-        }
-    }
-
-    public function getCandidateByPollID($id) {
+    public function getPollDataByPollID($id) {
         if($this->isTableExists($this->table_name)) {
             $where_param = "(`poll_id` = '" . $id . "')";
             $this->select($this->table_name, '*', $where_param);
@@ -66,7 +56,7 @@ class candidate extends model {
         }
     }
 
-    public function getCandidateByPositionID($id) {
+    public function getPollDataByPositionID($id) {
         if($this->isTableExists($this->table_name)) {
             $where_param = "(`position_id` = '" . $id . "')";
             $this->select($this->table_name, '*', $where_param);
@@ -77,7 +67,7 @@ class candidate extends model {
         }
     }
 
-    public function getCandidateByPollIDAndPositionID($poll_id, $position_id) {
+    public function getPollDataByPollIDAndPositionID($poll_id, $position_id) {
         if($this->isTableExists($this->table_name)) {
             $where_param = "(`poll_id` = '" . $poll_id . "' AND `position_id` = '" . $position_id . "')";
             $this->select($this->table_name, '*', $where_param);
@@ -88,27 +78,12 @@ class candidate extends model {
         }
     }
 
-    public function getCandidates() {
+    public function getPollDataByPollIDAndPositionIDAndVoterID($poll_id, $position_id, $voter_id) {
         if($this->isTableExists($this->table_name)) {
-            $this->select($this->table_name);
+            $where_param = "(`poll_id` = '" . $poll_id . "' AND `position_id` = '" . $position_id . "' AND `voter_id` = '" . $voter_id . "')";
+            $this->select($this->table_name, '*', $where_param);
             $position_details_obj = $this->result;
             return $position_details_obj;
-        } else {
-            throw new Exception ('Table ' . $this->table_name . ' not found..!!');
-        }
-    }
-
-    public function deleteCandidate($id) {
-        if($this->isTableExists($this->table_name)) {
-            $this->delete($this->table_name, 'candidate_id', $id);
-        } else {
-            throw new Exception ('Table ' . $this->table_name . ' not found..!!');
-        }
-    }
-
-    public function deleteCandidateByUserID($id) {
-        if($this->isTableExists($this->table_name)) {
-            $this->delete($this->table_name, 'user_id', $id);
         } else {
             throw new Exception ('Table ' . $this->table_name . ' not found..!!');
         }

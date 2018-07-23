@@ -33,6 +33,7 @@ class model extends db{
         if($this->isTableExists($table))
         {
             $query = @mysql_query($q);
+            $res = array();
             if($query)
             {
                 $this->numResults = mysql_num_rows($query);
@@ -42,6 +43,7 @@ class model extends db{
                     $key = array_keys($r); 
                     for($x = 0; $x < count($key); $x++)
                     {
+                        
                         if(!is_int($key[$x]))
                         {
                             if(mysql_num_rows($query) > 1)
@@ -52,7 +54,7 @@ class model extends db{
                                 $this->result[$key[$x]] = $r[$key[$x]]; 
                         }
                     }
-                }            
+                }           
                 return true; 
             }
             else
