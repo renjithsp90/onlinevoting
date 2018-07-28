@@ -133,8 +133,12 @@ class model extends db{
     }
 
     public function map($res_obj) {
+        $obj = $res_obj;
+        if(!array_key_exists(self::$fields[0], $res_obj)){
+            $obj = $res_obj[0];
+        }
         foreach(self::$fields as $field) {
-            $this->{$field} = $res_obj[0][$field];
+            $this->{$field} = $obj[$field];
         }
     }
 

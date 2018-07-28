@@ -93,8 +93,7 @@
                        title="Email should be in format like abc@xyz.com"/>
                   </label>
                   <label for="loginpassword">Password:
-                    <input type="password" name="loginpassword" id="loginpassword" value=""  required
-                     pattern="^(?=.*\d)(?=.*[a-zA-Z])[a-zA-Z0-9]{7,}$" title="" />
+                    <input type="password" name="loginpassword" id="loginpassword" value=""  required title="" />
                   </label>
                   
                   <p>

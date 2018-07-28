@@ -101,8 +101,9 @@ $(document).ready(function () {
                     url: "../controller/PollsController.php",
                     data: { "poll_id": pollID, "position_id": positionID, "user_id": userID, "method": "select" },
                     success: function (data) {
+                        console.log('dtaa', data);
                         var pollDataObj = JSON.parse(data);
-                        if (pollDataObj.hasOwnProperty('poll_data_id')) {
+                        if (pollDataObj[0].hasOwnProperty('poll_data_id')) {
                             isPolled = true;
                         }
                     }
@@ -186,7 +187,7 @@ $(document).ready(function () {
                                     $.ajax({
                                         type: "GET",
                                         url: "../controller/PollsController.php",
-                                        data: { "poll_data_id": '', "poll_id": pollID, "position_id": positionID, "candidate_id": candi['candidate_id'], "user_id": 32, "type": "poll", "method": "add" },
+                                        data: { "poll_data_id": '', "poll_id": pollID, "position_id": positionID, "candidate_id": candi['candidate_id'], "user_id": userID, "type": "poll", "method": "add" },
                                         success: function (data) {
                                             alert(data);
                                         }
